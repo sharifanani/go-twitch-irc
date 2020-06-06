@@ -540,8 +540,8 @@ func (c *Client) Whisper(username, text string) {
 	c.send(fmt.Sprintf("PRIVMSG #%s :/w %s %s", c.ircUser, username, text))
 }
 
-// Clear deletes a message from the chat
-func (c *Client) Clear(channel, text string) {
+// ClearMsg deletes a message from the chat
+func (c *Client) ClearMsg(channel, text string) {
 	channel = strings.ToLower(channel)
 
 	c.send(fmt.Sprintf("CLEARMSG #%s :%s", channel, text))
