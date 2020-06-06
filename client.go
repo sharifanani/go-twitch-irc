@@ -540,6 +540,13 @@ func (c *Client) Whisper(username, text string) {
 	c.send(fmt.Sprintf("PRIVMSG #%s :/w %s %s", c.ircUser, username, text))
 }
 
+// Clear deletes a message from the chat
+func (c *Client) Clear(channel, text string) {
+	channel = strings.ToLower(channel)
+
+	c.send(fmt.Sprintf("CLEARMSG #%s :%s", channel, text))
+}
+
 // Join enter a twitch channel to read more messages.
 func (c *Client) Join(channels ...string) {
 	messages, joined := createJoinMessages(c.channels, channels...)
