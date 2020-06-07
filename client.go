@@ -541,10 +541,10 @@ func (c *Client) Whisper(username, text string) {
 }
 
 // ClearMsg deletes a message from the chat
-func (c *Client) ClearMsg(channel, text string) {
+func (c *Client) ClearMsg(channel, msgID string) {
 	channel = strings.ToLower(channel)
 
-	c.send(fmt.Sprintf("CLEARMSG #%s :%s", channel, text))
+	c.send(fmt.Sprintf("PRIVMSG #%s :/delete %s", channel, msgID))
 }
 
 // Join enter a twitch channel to read more messages.
